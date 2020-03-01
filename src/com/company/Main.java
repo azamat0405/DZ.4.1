@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Main {
 
-    public static int bossHealth = 500;
+    public static int bossHealth = 600;
     public static int bossDamage = 50;
     public static String bossDeffenceType = "";
 
@@ -64,7 +64,7 @@ public class Main {
             if (heroesHealth[i] > 0) {
                 if (bossDeffenceType.equals(heroesAttackType[i])) {
                     Random r = new Random();
-                    int coef = r.nextInt(9) + 2;
+                    int coef = r.nextInt(8) + 2;
                     if (i == 3) {
                         int indexMinHeroesHealth = medHeroesHealth();
                         if (heroesHealth[indexMinHeroesHealth] < 100) {
