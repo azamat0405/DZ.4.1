@@ -9,7 +9,7 @@ public class Main {
     public static String bossDeffenceType = "";
 
     public static int[] heroesHealth = {250, 250, 250, 250};
-    public static int[] heroesDamage = {20, 20, 20, 20};
+    public static int[] heroesDamage = {20, 20, 20};
     public static String[] heroesAttackType = {"Physikal", "Magical", "Mental", "Medic"};
 
     public static void main(String[] args) {
@@ -23,6 +23,7 @@ public class Main {
         changeBossDefence();
         heroesHit();
         bossHit();
+        healHeroues();
         printStatistic();
     }
 
@@ -66,10 +67,10 @@ public class Main {
                     Random r = new Random();
                     int coef = r.nextInt(8) + 2;
                     if (i == 3) {
-                        int indexMinHeroesHealth = medHeroesHealth();
-                        if (heroesHealth[indexMinHeroesHealth] < 100) {
-                            heroesHealth[indexMinHeroesHealth] += heroesDamage[3] * coef;
-                        }
+                   //     int indexMinHeroesHealth = medHeroesHealth();
+                       // if (heroesHealth[indexMinHeroesHealth] < 100) {
+                       //     heroesHealth[indexMinHeroesHealth] += heroesDamage[3] * coef;
+                      //  }
 
                     } else {
                         if (heroesHealth[i] > 0) {
@@ -99,12 +100,23 @@ public class Main {
         int medIndex = 0;
         int minValue = heroesHealth[0];
         for (int i = 1; i < heroesHealth.length; i++) {
-            if (heroesHealth[i] < minValue) {
+            if (heroesHealth[i] > minValue && heroesHealth[i]<100) {
                 minValue = heroesHealth[i];
                 medIndex = i;
+                System.out.println();
             }
         }
         return medIndex;
+    }
+    public static void healHeroues(){
+        Random random = new Random();
+        int a =random.nextInt(2);
+        if (heroesHealth[3] > 0) {
+            heroesHealth[a] = heroesHealth[a] + 20;
+            System.out.println("Врач вылечил " + a + " на 20");
+        }else{
+            System.out.println("врач умер");
+        }
     }
 
 
