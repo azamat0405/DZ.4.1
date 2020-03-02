@@ -108,14 +108,19 @@ public class Main {
         }
         return medIndex;
     }
-    public static void healHeroues(){
-        Random random = new Random();
-        int a =random.nextInt(2);
-        if (heroesHealth[3] > 0) {
-            heroesHealth[a] = heroesHealth[a] + 20;
-            System.out.println("Врач вылечил " + a + " на 20");
-        }else{
-            System.out.println("врач умер");
+    public static void healHeroues() {
+
+        for (int i = 0; i < heroesHealth.length; i++) {
+            Random random = new Random();
+            int a = random.nextInt(2);
+            if (heroesHealth[3] > 0) {
+                if (heroesHealth[i] > 0 && heroesHealth[i] < 100) {
+                    heroesHealth[a] = heroesHealth[a] + 20;
+                    System.out.println("Врач вылечил " + a + " на 20");
+                } else {
+                    System.out.println("врач умер");
+                }
+            }
         }
     }
 
